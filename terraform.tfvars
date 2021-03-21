@@ -1,0 +1,6 @@
+subnet_cidr_block = "10.0.10.0/24"
+vpc_cidr_block    = "10.0.0.0/16"
+avail_zone        = "ap-south-1a"
+env_prefix        = "dev"
+my-ip             = "122.162.221.206/32"
+instance-type     = "t2.micro"
