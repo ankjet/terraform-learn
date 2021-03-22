@@ -18,6 +18,7 @@ resource "aws_route_table" "myapp-rt" {
   }
   tags = {
     Name = "${var.env_prefix}_rtb"
+  
   }
 }
 

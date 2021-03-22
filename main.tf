@@ -1,5 +1,5 @@
 provider "aws" {
- region = "ap-south-1"
+  region = "ap-south-1"
   # access_key = "AKIAQ26DSWGPLMJ5HGH5"
   # secret_key = "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"
 }
@@ -22,6 +22,10 @@ module "myapp-subnet" {
   avail_zone        = var.avail_zone
   env_prefix        = var.env_prefix
   vpc_id            = aws_vpc.myapp-vpc.id
+
+}
+output "AZ" {
+  value = var.avail_zone
 }
 resource "aws_security_group" "allow_tcp_http" {
   name   = "myapp-sg"
@@ -82,10 +86,10 @@ resource "aws_instance" "myapp-server" {
   availability_zone           = var.avail_zone
   associate_public_ip_address = true
   key_name                    = "server-key-pair.${count.index}"
-  count = 2
+  count                       = 2
 
   user_data = file("entry-script.sh")
-} 
+}
 
 variable "private_subnet_names" {
   type    = list(string)
